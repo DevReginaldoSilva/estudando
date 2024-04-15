@@ -5,10 +5,10 @@ const app = express()
 app.use(express.json())
 
 app.get('/users/',(request,response)=>{
-        console.log(request.body)
+        const {name,age,Rob} =request.body
 
         
-return response.json({message: "ok"})
+return response.json({name,age,Rob} )
      
 })
         app.listen(port,()=>{
