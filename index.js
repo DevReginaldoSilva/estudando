@@ -1,7 +1,6 @@
 const express = require('express')
 const uuid = require('uuid')
 
-
 const port = 3000
 const app = express()
 app.use(express.json())
@@ -9,7 +8,6 @@ app.use(express.json())
 
 
 const users = []
-
 app.get('/users/',(request,response)=>{ 
         return response.json(users)
      
@@ -25,6 +23,20 @@ app.post('/users/',(request,response)=>{
 
         return response.status(201).json(user)
 
+})
+app.put('/users/:id',(request,response)=>{ 
+        const {id}=request.params
+        const {name,age}=request.boby
+
+        const updateUser={id,name,age}
+
+        const index= users.findIndex(user => user.id ===id)
+
+        console.log(index)
+
+        
+        return response.json(users)
+     
 })
 
         app.listen(port,()=>{
