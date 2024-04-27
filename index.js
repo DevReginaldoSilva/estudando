@@ -26,11 +26,15 @@ app.post('/users/',(request,response)=>{
 })
 app.put('/users/:id',(request,response)=>{ 
         const {id}=request.params
-        const {name,age}=request.boby
+        const {name,age}=request.body
 
         const updateUser={id,name,age}
 
         const index= users.findIndex(user => user.id ===id)
+        if(index<0){
+                return response.status(400).json({message:"User not found"})
+        }
+                users[index]=updateUser
 
         console.log(index)
 
