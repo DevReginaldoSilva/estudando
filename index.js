@@ -36,12 +36,28 @@ app.put('/users/:id',(request,response)=>{
         }
                 users[index]=updateUser
 
-        console.log(index)
-
-        
-        return response.json(users)
+              
+        return response.json(updateUser)
      
 })
+
+app.delete('/users/:id',(request,response)=>{ 
+        const {id}=request.params
+        
+
+        const index= users.findIndex(user => user.id ===id)
+       
+        if(index<0){
+                return response.status(400).json({message:"User not found"})
+        }
+                users.splice(index,1)
+
+    
+        
+        return response.status(204).json()
+     
+})
+
 
         app.listen(port,()=>{
             console.log(`🎸server started on port ${port} 😎`)
