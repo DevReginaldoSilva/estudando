@@ -18,7 +18,7 @@ app.post('/users/',(request,response)=>{
 
         const user = {id: uuid.v4(),name,age}
         
-        users.push(user)
+        users.push(user) //nesse trecho do codigo o metodo .push adiciona um elemento ao final do ARRY, apos a execução codigo have um novo elemento que e o obj 'user'
 
 
         return response.status(201).json(user)
